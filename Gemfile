@@ -14,6 +14,8 @@ gem 'figaro'
 gem 'pg'
 gem 'rolify'
 gem 'thin'
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
