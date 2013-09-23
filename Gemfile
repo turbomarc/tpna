@@ -36,3 +36,28 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'cancan'
+gem 'devise'
+gem 'figaro'
+gem 'pg'
+gem 'rolify'
+gem 'thin'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
+  gem 'quiet_assets'
+  gem 'rails_layout'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'database_cleaner', '1.0.1'
+  gem 'email_spec'
+end
+
