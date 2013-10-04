@@ -1,0 +1,16 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="table table-condensed">
+    <tr>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "email" %></th>
+      <th><%= sortable "allhousenum", "Street Address" %></th>
+    </tr>
+  <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td><%= member.email %></td>
+      <td><%= member.allhousenum %></td>
+  <% end %>
+</table>
+<%= will_paginate @members %>

@@ -1,24 +1,15 @@
 <h1>All members</h1>
+
+<%= form_tag members_path, :method => 'get', :id => "members_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>    
+  </p>
+  <div id="members"><%= render 'members' %></div>
+<% end %>
+
+
      
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>House</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @members.each do |member| %>
-    <tr>
-      <td><%= member.name %></td>
-      <td><%= member.email %></td>
-      <td><%= member.allhousenum %></td>
-  <% end %>
-  </tbody>
-</table>
-<%= will_paginate @members %>
-</div>
 <h2>Import Products</h2>
 
 <%= form_tag import_members_path, multipart: true do %>
