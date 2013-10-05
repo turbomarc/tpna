@@ -10,6 +10,24 @@ class MembersController < ApplicationController
       end
   end
   
+  def show
+    @member = Member.find(params[:id])
+  end
+  
+  def edit
+    @member = Member.find(params[:id])
+  end
+  
+  def update
+    authorize! :update, @user, :message => 'Not authorized as an administrator.'
+    @member = Member.find(params[:id])
+    if @member.update_attributes(params[:member])
+      redirect_to members_path, :notice => "Member updated."
+    else
+      redirect_to members_path, :alert => "Unable to update member."
+    end
+  end
+  
   def import
     Member.import(params[:file])
     redirect_to root_url, notice: "Members imported."

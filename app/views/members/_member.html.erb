@@ -1,3 +1,4 @@
-<li>
-  <%= member.id %> # <%= member.name %> <%= member.allhousenum %>  <%= member.email %>
-</li>
+<h3>Member</h3>
+<p>Name: <%= @member.name %></p>
+<p>Email: <%= @member.email if @member.email %></p>
+<p>Street Address: <%= @member.allhousenum if @member.allhousenum %> </p>
