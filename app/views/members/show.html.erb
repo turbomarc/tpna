@@ -1,5 +1,8 @@
 <h3>Member</h3>
 <p>Name: <%= @member.name %></p>
-<p>Email: <%= @member.email if @member.email %></p>
 <p>Street Address: <%= @member.allhousenum if @member.allhousenum %> </p>
+<p>Email: <%= @member.email if @member.email %></p>
+<p>Last Payment: <%= @member.last_payment if @member.last_payment %> </p>
+<p>Amount: <%= @member.amt if @member.amt %></p>
+<p>Expires: <%= @member.paid_thru if @member.paid_thru %></p>
 <%= link_to "Edit", edit_member_path(@member) %>

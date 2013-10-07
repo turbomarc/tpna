@@ -5,18 +5,6 @@
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>    
   </p>
-  <div id="members"><%= render 'memberslist' %></div>
+  <div id="members"><%= render 'members' %></div>
 <% end %>
-
-
-     
-<h2>Import Products</h2>
-
-<%= form_tag import_members_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>
-<div>
-<%= link_to "Download CSV", members_path(format: "csv") %>
-</div>
 

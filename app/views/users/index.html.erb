@@ -27,4 +27,17 @@
   <% end %>
   </tbody>
 </table>
+<h3>Import / Export Members List</h3>
+
+<%= form_tag import_members_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
+<div>
+<%= link_to "Download CSV", members_path(format: "csv") %>
 </div>
+</div>
+
+
+
+

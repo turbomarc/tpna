@@ -7,7 +7,7 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :join
       t.date :updated
       t.date :last_payment
-      t.integer :amount
+      t.integer :amt
       t.integer :paid_thru
       t.string :email
       t.string :phone
@@ -37,7 +37,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :ref
       t.string :plus
       t.integer :parcel_id
-      t.string :own_ren
+      t.string :own_rent
 
       t.timestamps
     end

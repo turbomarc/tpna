@@ -1,11 +1,9 @@
-<h1>Update your profile</h1>
+<h3>Update Member</h3>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@member) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <%= render 'fields', f: f %>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+<%= form_for(@member) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div>
+    <%= render 'fields', f: f %><br />
+    <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+<% end %>
   </div>
-</div>
