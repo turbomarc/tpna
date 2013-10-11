@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Marc Phillips</Author>
+  <LastAuthor>Marc Phillips</LastAuthor>
+  <Created>2013-10-11T05:15:11Z</Created>
+  <LastSaved>2013-10-11T05:17:13Z</LastSaved>
+  <Version>14.0</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>12640</WindowHeight>
+  <WindowWidth>25600</WindowWidth>
+  <WindowTopX>0</WindowTopX>
+  <WindowTopY>0</WindowTopY>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+  <Style ss:ID="s62">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s65">
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"
+    ss:Bold="1"/>
+  </Style>
+  <Style ss:ID="s68">
+   <Borders>
+    <Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>
+    <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
+   </Borders>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Sheet1">
+  <Table x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="15">
+   <Row ss:StyleID="s65">
+    <Cell ss:StyleID="s62"><Data ss:Type="String">id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">allhousenum</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">join</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">updated</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">last_payment</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">amt</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">paid_thru</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">email</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">phone</Data></Cell>
+   </Row>
+<% @members.each do |member| %>
+   <Row>
+   <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.id %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.name %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.allhousenum %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.join %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.updated %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.last_payment %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.amt %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.paid_thru %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.email %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.phone %></Data></Cell>
+     </Row>
+<% end %>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <Print>
+    <ValidPrinterInfo/>
+    <HorizontalResolution>-4</HorizontalResolution>
+    <VerticalResolution>-4</VerticalResolution>
+   </Print>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <FreezePanes/>
+   <FrozenNoSplit/>
+   <SplitHorizontal>1</SplitHorizontal>
+   <TopRowBottomPane>1</TopRowBottomPane>
+   <ActivePane>2</ActivePane>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+    </Pane>
+    <Pane>
+     <Number>2</Number>
+     <ActiveRow>0</ActiveRow>
+     <RangeSelection>R1</RangeSelection>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

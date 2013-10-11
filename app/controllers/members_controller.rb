@@ -2,10 +2,11 @@ class MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
-    @members = Member.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    @members = Member.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     respond_to do |format|
         format.html
         format.csv { send_data @members.to_csv } #{ render text: @members.to_csv }
+        format.xls# { send_data @members.to_csv(col_sep: "\t") }
         format.js
       end
   end
@@ -36,7 +37,7 @@ class MembersController < ApplicationController
   private
 
     def sort_column
-      Member.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      Member.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
 
     def sort_direction

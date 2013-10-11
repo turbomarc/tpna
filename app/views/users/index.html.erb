@@ -34,7 +34,8 @@
   <%= submit_tag "Import" %>
 <% end %>
 <div>
-<%= link_to "Download CSV", members_path(format: "csv") %>
+<%= link_to "Download CSV", members_path(format: "csv") %> | 
+<%= link_to "Download Excel", members_path(format: "xls") %>
 </div>
 </div>
 

@@ -2,6 +2,7 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 <table class="table table-condensed">
     <tr>
+	  <th><%= sortable "id" %></th>
       <th><%= sortable "name" %></th>
       <th><%= sortable "allhousenum", "Street Address" %></th>
       <th><%= sortable "email" %></th>
@@ -11,6 +12,7 @@
     </tr>
   <% @members.each do |member| %>
     <tr>
+	  <td><%= member.id %>	
       <td><%= link_to member.name, member %></td>
       <td><%= member.allhousenum %></td>
       <td><%= member.email %></td>
