@@ -9,7 +9,7 @@
 #  join         :integer
 #  updated      :date
 #  last_payment :date
-#  amount       :integer
+#  amt          :integer
 #  paid_thru    :integer
 #  email        :string(255)
 #  phone        :string(255)
@@ -42,7 +42,6 @@
 #  own_rent     :string(255)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  amt          :decimal(, )
 #
 
 require 'spec_helper'

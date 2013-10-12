@@ -11,10 +11,6 @@ class MembersController < ApplicationController
       end
   end
   
-  def show
-    @member = Member.find(params[:id])
-  end
-  
   def edit
     @member = Member.find(params[:id])
   end

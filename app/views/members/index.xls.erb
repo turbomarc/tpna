@@ -53,6 +53,9 @@
     <Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>
    </Borders>
   </Style>
+ <Style ss:ID="s69" ss:Parent="s68">
+   <NumberFormat ss:Format="Short Date" />
+  </Style>
  </Styles>
  <Worksheet ss:Name="Sheet1">
   <Table x:FullColumns="1"
@@ -68,20 +71,76 @@
     <Cell ss:StyleID="s62"><Data ss:Type="String">paid_thru</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">email</Data></Cell>
     <Cell ss:StyleID="s62"><Data ss:Type="String">phone</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">street_name</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">citystzip</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">notes</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">status</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">auto_status</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">street</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">aptno</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">moved</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">st</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">hsenum</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">blknum</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">pos</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">who</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">disc</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">transdate</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">use</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">site_misc</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">sec</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">copy</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">blk</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">side</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">multi</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">evenodd</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">on</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">ref</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">plus</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">parcel_id</Data></Cell>
+    <Cell ss:StyleID="s62"><Data ss:Type="String">own_rent</Data></Cell>
    </Row>
 <% @members.each do |member| %>
    <Row>
-   <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.id %></Data></Cell>
+    <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.id %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.name %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.allhousenum %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.join %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.updated %></Data></Cell>
-    <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.last_payment %></Data></Cell>
+    <Cell ss:StyleID="s69"><Data ss:Type="DateTime"><%= member.last_payment %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.amt %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.paid_thru %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.email %></Data></Cell>
     <Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.phone %></Data></Cell>
-     </Row>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.street_name %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.citystzip %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.notes %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.status %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.auto_status %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.street %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.aptno %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.moved %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.st %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.hsenum %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.blknum %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.pos %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.who %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.disc %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.transdate %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.use %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.site_misc %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.sec %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.copy %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.blk %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.side %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.multi %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.evenodd %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.on %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.ref %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.plus %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="Number"><%= member.parcel_id %></Data></Cell>
+   	<Cell ss:StyleID="s68"><Data ss:Type="String"><%= member.own_rent %></Data></Cell>
+   </Row>
 <% end %>
   </Table>
   <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">

@@ -31,7 +31,7 @@
 
 <%= form_tag import_members_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+  <%= submit_tag "Import", :class => "btn btn-primary" %>
 <% end %>
 <div>
 <%= link_to "Download CSV", members_path(format: "csv") %> | 

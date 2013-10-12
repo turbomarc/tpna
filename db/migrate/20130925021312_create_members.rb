@@ -32,7 +32,7 @@ class CreateMembers < ActiveRecord::Migration
       t.integer :blk
       t.string :side
       t.string :multi
-      t.decimal :evenodd
+      t.integer :evenodd
       t.string :on
       t.string :ref
       t.string :plus
