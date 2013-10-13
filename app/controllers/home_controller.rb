@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    if signed_in?
+      redirect_to members_path
+    end
   end
 end

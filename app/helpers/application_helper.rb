@@ -7,4 +7,13 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
   end
   
+  #returns the full title on a per-page basis.
+  def full_title(page_title)
+    base_title = "TPNA Membership"
+    if page_title.empty?
+      base_title
+    else
+      "#{base_title} | #{page_title}"
+    end
+  end
 end

@@ -1,13 +1,14 @@
-<h3>Update Member</h3>
+<% provide(:title, "Edit Member") %> 
+<h1>Update member information</h1>
 
-<%= form_for(@member) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div>
-    <%= render 'fields', f: f %><br />
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@member) do |f| %>
+  	<%= render 'shared/error_messages', object: f.object %>
+    <%= render 'fields', f: f %>
     <%= f.submit "Save changes", class: "btn btn-primary" %>
 <% end %>
-  </div>
-<div>
+
 	<p>Street Name: <%= @member.street_name %></p>
 	<p>City/State/Zip: <%= @member.citystzip %> </p>
 	<p>Notes: <%= @member.notes  %></p>
@@ -37,3 +38,4 @@
 	<p>Parcel ID: <%= @member.parcel_id %> </p>
 	<p>Own/Rent: <%= @member.own_rent %> </p>
 	</div>
+</div>

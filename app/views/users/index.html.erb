@@ -1,7 +1,7 @@
-<h3>Users</h3>
-<div class="span8">
-<table class="table table-condensed">
-  <thead>
+<% provide(:title, "Admin") %> 
+<h1>Adminstration</h1>
+
+<table class="table table-condensed table-striped">
     <tr>
       <th>Username</th>
       <th>Email</th>
@@ -10,8 +10,6 @@
       <th></th>
       <th></th>
     </tr>
-  </thead>
-  <tbody>
   <% @users.each do |user| %>
     <tr>
       <td><%= link_to user.name, user %></td>
@@ -25,7 +23,6 @@
       <td><%= link_to("Delete user", user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user %></td>
     </tr>
   <% end %>
-  </tbody>
 </table>
 <h3>Import / Export Members List</h3>
 
@@ -36,7 +33,6 @@
 <div>
 <%= link_to "Download CSV", members_path(format: "csv") %> | 
 <%= link_to "Download Excel", members_path(format: "xls") %>
-</div>
 </div>
 
 

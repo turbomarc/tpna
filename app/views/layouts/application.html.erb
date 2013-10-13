@@ -2,35 +2,22 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Tpna" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Tpna" %>">
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Trinity Park Neighborhood Association Membership List" %>">
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
-    <%= yield(:head) %>
+    <%= render 'layouts/shim' %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div class="navbar navbar-fixed-top">
-      <nav class="navbar-inner">
-        <div class="container">
-          <%= render 'layouts/navigation' %>
-        </div>
-      </nav>
+  <body>
+	<%= render 'layouts/header' %>
+  	<div class="container">
+      <% flash.each do |key, value| %>
+      	<%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %>
     </div>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-           <div class="row">
-            <div class="span12">
-              <%= render 'layouts/messages' %>
-              <%= yield %>
-            </div>
-          </div>
-          <%= debug(params) if Rails.env.development? %>
-          <footer>
-          </footer>
-        </div>
-      </div> <!--! end of .container -->
-    </div> <!--! end of #main -->
   </body>
 </html>
