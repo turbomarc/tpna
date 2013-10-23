@@ -17,6 +17,7 @@ gem 'thin'
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-will_paginate'
 gem 'roo'
+gem 'acts_as_xlsx'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]

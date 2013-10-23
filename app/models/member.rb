@@ -20,6 +20,8 @@
 class Member < ActiveRecord::Base
   attr_accessible :allhousenum, :amt, :citystzip, :email, :join, :last_payment, :name, :paid_thru, :phone, :updated
 
+  acts_as_xlsx
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

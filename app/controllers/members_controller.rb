@@ -7,6 +7,9 @@ class MembersController < ApplicationController
         format.html
         format.csv { send_data @members.to_csv } #{ render text: @members.to_csv }
         format.xls# { send_data @members.to_csv(col_sep: "\t") }
+        format.xlsx {
+                    send_data Member.to_xlsx.to_stream.read, :filename => 'posts.xlsx', :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                }
         format.js
       end
   end
