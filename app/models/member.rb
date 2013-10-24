@@ -36,10 +36,20 @@ class Member < ActiveRecord::Base
     header = spreadsheet.row(1)
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
-      member = find_by_id(row["id"]) || new
-      member.attributes = row.to_hash.slice(*accessible_attributes)
+      member = find_by_id(row["id"]) || find_by_id(row["Id"]) || new
+      member.attributes = rehash_keys(row).slice(*accessible_attributes)
+
       member.save!
     end
+  end
+  
+  def self.rehash_keys(row)
+    row_hash = row.to_hash
+    new_keys_hash = {}
+    row_hash.each do |old_key,old_value|
+      new_keys_hash[old_key.downcase.gsub(/[^a-z]/, '_')] = old_value
+    end
+    new_keys_hash
   end
   
   def self.open_spreadsheet(file)
