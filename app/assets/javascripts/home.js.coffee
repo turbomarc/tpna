@@ -1,3 +1,9 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $("#members-list-download").on 'click', (event) ->
+    event.preventDefault()
+
+    query = $('#search').val()
+    search_string = $.param({search: query}) if query
+    download_uri = _.compact([$(@).prop('href'), search_string]).join('?')
+
+    window.location = download_uri

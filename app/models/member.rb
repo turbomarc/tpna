@@ -20,6 +20,8 @@
 class Member < ActiveRecord::Base
   attr_accessible :allhousenum, :amt, :citystzip, :email, :join, :last_payment, :name, :paid_thru, :phone, :updated
 
+  scope :matching, lambda {|query| where('name ILIKE ? OR allhousenum ILIKE ?', "%#{query}%", "%#{query}%")}
+
   acts_as_xlsx
 
   def self.to_csv(options = {})
@@ -30,7 +32,7 @@ class Member < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.import(file)
     spreadsheet = open_spreadsheet(file)
     header = spreadsheet.row(1)
@@ -42,7 +44,7 @@ class Member < ActiveRecord::Base
       member.save!
     end
   end
-  
+
   def self.rehash_keys(row)
     row_hash = row.to_hash
     new_keys_hash = {}
@@ -51,7 +53,7 @@ class Member < ActiveRecord::Base
     end
     new_keys_hash
   end
-  
+
   def self.open_spreadsheet(file)
     case File.extname(file.original_filename)
     when ".csv" then Roo::Csv.new(file.path, nil, :ignore)
@@ -60,11 +62,11 @@ class Member < ActiveRecord::Base
     else raise "Unknown file type: #{file.original_filename}"
     end
   end
-  
-  
-  def self.search(search)
-    if search
-      where('name ILIKE ? OR allhousenum ILIKE ?', "%#{search}%", "%#{search}%")
+
+
+  def self.search(query)
+    if query.present?
+      matching(query)
     else
       scoped
     end
