@@ -1,4 +1,4 @@
-<% provide(:title, "Admin") %> 
+<% provide(:title, "Admin") %>
 <h1>Adminstration</h1>
 
 <table class="table table-condensed table-striped">
@@ -30,10 +30,11 @@
   <%= file_field_tag :file %>
   <%= submit_tag "Import", :class => "btn btn-primary" %>
 <% end %>
+
 <div>
-<%= link_to "Download CSV", members_path(format: "csv") %> | 
-<%= link_to "Download Excel", members_path(format: "xls") %> |
-<%= link_to "Download ExcelX", members_path(format: "xlsx") %>
+  <%= link_to "Download CSV", members_path(format: "csv") %> |
+  <%= link_to "Download Excel", members_path(format: "xls") %> |
+  <%= link_to "Download ExcelX", members_path(format: "xlsx") %>
 </div>
 
 

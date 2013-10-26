@@ -1,0 +1,21 @@
+@import "compass/typography";
+
+th a {
+  &.current {
+    padding-right: image-width("up_arrow.gif") + 2px;
+    background-repeat: no-repeat;
+    background-position: right center;
+  }
+
+  &.asc {
+    background-image: image-url("up_arrow.gif");
+  }
+
+  &.desc {
+    background-image: image-url("down_arrow.gif");
+  }
+}
+
+.members-table {
+  @include leader;
+}

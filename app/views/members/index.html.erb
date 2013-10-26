@@ -1,10 +1,18 @@
-<% provide(:title, "Member List") %> 
+<% provide(:title, "Member List") %>
 <h1>Member List</h1>
 
-<%= form_tag members_path, :method => 'get', :id => "members_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search], placeholder: 'Start typing to search...' %>  
-  </p>
-  <div id="members"><%= render 'members' %></div>
+<%= form_tag members_path, :method => 'get', :id => "members_search", :class => 'form-search' do %>
+  <div class="row">
+    <div class="span10">
+      <%= text_field_tag :search, params[:search], placeholder: 'Start typing to search...' %>
+    </div>
+    <div class="span2">
+      <%= link_to members_path(format: "xlsx"), :class => 'btn btn-block', :id => 'members-list-download' do %>
+        Export This List
+        <%= icon('download') %>
+      <%- end %>
+    </div>
+  </div>
+  <div id="members" class="members-table"><%= render 'members' %></div>
 <% end %>
 

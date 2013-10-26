@@ -13,12 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require underscore
 //= require_tree .
 
 $(function () {
 	$('#members').on('click', 'th a, .pagination a' , function () {
-	    $.getScript(this.href);
-	    return false;
+    $.getScript(this.href);
+    return false;
 	});
 	$("#members_search input").keyup(function() {
 		$.get($("#members_search").attr("action"), $("#members_search").serialize(), null, "script");
