@@ -18,5 +18,5 @@ $ ->
   $("#search").keyup ->
     ajaxSearch(@)
 
-  $("#ren_search, #ren_search_end").change ->
+  $("#renewal_date_start, #renewal_date_end").change ->
     ajaxSearch(@)

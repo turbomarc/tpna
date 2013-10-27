@@ -50,7 +50,7 @@ class MembersController < ApplicationController
   end
 
   def filtered_members
-    Member.search(params[:search]).renewal_between(params[:ren_search], params[:ren_search_end])
+    Member.search(params[:search]).renewal_between(params[:renewal_date_start], params[:renewal_date_end])
   end
 
   def filtered_paginated_members
