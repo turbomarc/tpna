@@ -12,12 +12,12 @@
     </tr>
   <% @members.each do |member| %>
     <tr>
-	  <td><%= member.id %>	
+	  <td><%= member.id %>
       <td><%= link_to member.name, edit_member_path(member) %></td>
-      <td><%= member.allhousenum %></td>
-      <td><%= member.email %></td>
+      <td><%= link_to_google_maps member.allhousenum %></td>
+      <td><%= mail_to member.email %></td>
       <td><%= member.last_payment %></td>
-      <td><%= member.amt %></td>
+      <td><%= number_to_currency member.amt %></td>
       <td><%= member.paid_thru %></td>
   <% end %>
 </table>
