@@ -21,6 +21,8 @@ class Member < ActiveRecord::Base
   attr_accessible :allhousenum, :amt, :citystzip, :email, :join, :last_payment, :name, :paid_thru, :phone, :updated
 
   scope :matching, lambda {|query| where('name ILIKE ? OR allhousenum ILIKE ?', "%#{query}%", "%#{query}%")}
+  scope :ren_matching, lambda {|query, ren_query, ren_end_query| where('(name ILIKE ? OR allhousenum ILIKE ?) AND (paid_thru BETWEEN ? and ?)', "%#{query}%", "%#{query}%", "%#{ren_query}%", "%#{ren_end_query}%")}
+  scope :ren_only_matching, lambda {|ren_query, ren_end_query| where('paid_thru BETWEEN ? and ?', "%#{ren_query}%", "%#{ren_end_query}%")}
 
   acts_as_xlsx
 
@@ -64,9 +66,13 @@ class Member < ActiveRecord::Base
   end
 
 
-  def self.search(query)
-    if query.present?
+  def self.search(query, ren_query, ren_end_query)
+    if query.present? && ren_query.present? && ren_end_query.present?
+      ren_matching(query, ren_query, ren_end_query)
+    elsif query.present? && !ren_query.present? && !ren_end_query.present?
       matching(query)
+    elsif !query.present? && ren_query.present? && ren_end_query.present?
+      ren_only_matching(ren_query, ren_end_query)
     else
       scoped
     end

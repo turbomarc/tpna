@@ -2,13 +2,14 @@ class MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @members = Member.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
+     puts "SEARCH: #{params[:search]} -- REN_SEARCH: #{params[:ren_search]} -- REN_SEARCH_END: #{params[:ren_search_end]}"
+    @members = Member.search(params[:search], params[:ren_search], params[:ren_search_end]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
     respond_to do |format|
         format.html
         format.csv { send_data @members.to_csv } #{ render text: @members.to_csv }
         format.xls# { send_data @members.to_csv(col_sep: "\t") }
         format.xlsx {
-          send_data Member.search(params[:search]).to_xlsx.to_stream.read, :filename => download_filename, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          send_data Member.search(params[:search], params[:ren_search], params[:ren_search_end]).to_xlsx.to_stream.read, :filename => download_filename, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         }
         format.js
       end

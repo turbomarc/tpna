@@ -13,6 +13,17 @@
       <%- end %>
     </div>
   </div>
+	<div class="row">
+		<div class="span3">
+			<%= text_field_tag :ren_search, params[:ren_search], placeholder: 'Or enter start date...' %>
+		</div>
+		<div class="span3">
+			<%= text_field_tag :ren_search_end, params[:ren_search_end], placeholder: '...and end date' %>
+		</div>
+		<div class="span2">
+			<%= submit_tag "Check Renewal Dates", :name => nil, class: "btn btn-primary" %>
+		</div>
+	</div>
   <div id="members" class="members-table"><%= render 'members' %></div>
 <% end %>
 
