@@ -1,3 +1,22 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+ajaxSearch = (input) ->
+  $form = $(input).parents('form')
+  $.get $form.attr("action"), $form.serialize(), null, "script"
+
+$ ->
+  $("#members-list-download").on 'click', (event) ->
+    event.preventDefault()
+
+    search_string = $(@).parents('form').serialize()
+    download_uri = _.compact([@href, search_string]).join('?')
+
+    window.location = download_uri
+
+  $("#members").on "click", "th a, .pagination a", ->
+    $.getScript @href
+    false
+
+  $("#search").keyup ->
+    ajaxSearch(@)
+
+  $("#ren_search, #ren_search_end").change ->
+    ajaxSearch(@)

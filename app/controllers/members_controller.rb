@@ -1,4 +1,6 @@
 class MembersController < ApplicationController
+  # FIXME: Ensure user is authenticated to access anything in this controller.
+
   helper_method :sort_column, :sort_direction
 
   def index

@@ -18,18 +18,4 @@
 //= require date-input-polyfill
 //= require_tree .
 
-$(function () {
-	$('#members').on('click', 'th a, .pagination a' , function () {
-    $.getScript(this.href);
-    return false;
-	});
-	$("#members_search #search").keyup(function() {
-		$.get($("#members_search").attr("action"), $("#members_search").serialize(), null, "script");
-		return false;
-	});
-  	$('#members_search').submit(function () {
-    	$.get(this.action, $(this).serialize(), null, 'script');
-    	return false;
-  	});
-});
 
