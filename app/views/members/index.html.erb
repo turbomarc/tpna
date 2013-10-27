@@ -3,27 +3,30 @@
 
 <%= form_tag members_path, :method => 'get', :id => "members_search", :class => 'form-search' do %>
   <div class="row">
-    <div class="span10">
-      <%= text_field_tag :search, params[:search], placeholder: 'Start typing to search...' %>
+    <div class="span6">
+      <%= text_field_tag :search, params[:search], placeholder: 'Start typing name or address to search...' %>
     </div>
-    <div class="span2">
+		<div class="span2">
+			<%= date_field_tag :ren_search, params[:ren_search] %>
+      <span class="help-block">Renewal Date (Start)</span>
+		</div>
+		<div class="span2">
+			<%= date_field_tag :ren_search_end, params[:ren_search_end] %>
+      <span class="help-block">Renewal Date (End)</span>
+		</div>
+		<div class="span2">
+			<%= submit_tag "Search", :name => nil, class: "btn btn-primary btn-block" %>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="span2 offset10">
       <%= link_to members_path(format: "xlsx"), :class => 'btn btn-block', :id => 'members-list-download' do %>
         Export This List
         <%= icon('download') %>
       <%- end %>
     </div>
   </div>
-	<div class="row">
-		<div class="span3">
-			<%= text_field_tag :ren_search, params[:ren_search], placeholder: 'Or enter start date...' %>
-		</div>
-		<div class="span3">
-			<%= text_field_tag :ren_search_end, params[:ren_search_end], placeholder: '...and end date' %>
-		</div>
-		<div class="span2">
-			<%= submit_tag "Check Renewal Dates", :name => nil, class: "btn btn-primary" %>
-		</div>
-	</div>
   <div id="members" class="members-table"><%= render 'members' %></div>
 <% end %>
 
