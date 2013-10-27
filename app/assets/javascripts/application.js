@@ -18,4 +18,3 @@
 //= require date-input-polyfill
 //= require_tree .
 
-

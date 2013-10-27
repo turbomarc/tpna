@@ -2,13 +2,13 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 <table class="table table-bordered table-striped">
     <tr>
-	  <th><%= sortable "id" %></th>
+      <th><%= sortable "id", "ID" %></th>
       <th><%= sortable "name" %></th>
       <th><%= sortable "allhousenum", "Street Address" %></th>
       <th><%= sortable "email" %></th>
       <th><%= sortable "last_payment", "Last Payment" %></th>
       <th><%= sortable "amt", "Amount" %></th>
-      <th><%= sortable "paid_thru", "Expires" %></th>
+      <th><%= sortable "paid_thru", "Expiration/Renewal" %></th>
     </tr>
   <% @members.each do |member| %>
     <tr>
