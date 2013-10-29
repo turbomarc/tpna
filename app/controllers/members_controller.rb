@@ -1,15 +1,16 @@
 class MembersController < ApplicationController
+  # FIXME: Ensure user is authenticated to access anything in this controller.
+
   helper_method :sort_column, :sort_direction
 
   def index
-     puts "SEARCH: #{params[:search]} -- REN_SEARCH: #{params[:ren_search]} -- REN_SEARCH_END: #{params[:ren_search_end]}"
-    @members = Member.search(params[:search], params[:ren_search], params[:ren_search_end]).order(sort_column + " " + sort_direction).paginate(:per_page => 25, :page => params[:page])
+    @members = filtered_paginated_members
     respond_to do |format|
         format.html
         format.csv { send_data @members.to_csv } #{ render text: @members.to_csv }
         format.xls# { send_data @members.to_csv(col_sep: "\t") }
         format.xlsx {
-          send_data Member.search(params[:search], params[:ren_search], params[:ren_search_end]).to_xlsx.to_stream.read, :filename => download_filename, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          send_data filtered_members.to_xlsx.to_stream.read, :filename => download_filename, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         }
         format.js
       end
@@ -46,6 +47,15 @@ class MembersController < ApplicationController
 
   def download_filename
     ['tpna-members', params[:search], Time.current.to_s(:number)].compact.join('-') + '.xlsx'
+  end
+
+  def filtered_members
+    Member.search(params[:search]).renewal_between(params[:renewal_date_start], params[:renewal_date_end])
+  end
+
+  def filtered_paginated_members
+    filtered_members.order(sort_column + " " + sort_direction)
+                    .paginate(:per_page => 25, :page => params[:page])
   end
 
 end

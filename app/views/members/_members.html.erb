@@ -1,24 +1,29 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 <table class="table table-bordered table-striped">
+  <thead>
     <tr>
-	  <th><%= sortable "id" %></th>
+      <th><%= sortable "id", "ID" %></th>
       <th><%= sortable "name" %></th>
       <th><%= sortable "allhousenum", "Street Address" %></th>
       <th><%= sortable "email" %></th>
       <th><%= sortable "last_payment", "Last Payment" %></th>
       <th><%= sortable "amt", "Amount" %></th>
-      <th><%= sortable "paid_thru", "Expires" %></th>
+      <th><%= sortable "paid_thru", "Expiration/Renewal" %></th>
     </tr>
-  <% @members.each do |member| %>
-    <tr>
-	  <td><%= member.id %>	
-      <td><%= link_to member.name, edit_member_path(member) %></td>
-      <td><%= member.allhousenum %></td>
-      <td><%= member.email %></td>
-      <td><%= member.last_payment %></td>
-      <td><%= member.amt %></td>
-      <td><%= member.paid_thru %></td>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.id %></td>
+        <td><%= link_to member.name, edit_member_path(member) %></td>
+        <td><%= link_to_google_maps member.allhousenum %></td>
+        <td><%= mail_to member.email %></td>
+        <td><%= member.last_payment %></td>
+        <td><%= number_to_currency member.amt %></td>
+        <td><%= member.paid_thru %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 <%= will_paginate @members %>
