@@ -3,10 +3,18 @@
 
 <%= form_tag members_path, :method => 'get', :id => "members_search", :class => 'form-search' do %>
   <div class="row">
-    <div class="span10">
-      <%= text_field_tag :search, params[:search], placeholder: 'Start typing to search...' %>
+    <div class="span6">
+      <%= text_field_tag :search, params[:search], placeholder: 'Start typing name or address to search...' %>
     </div>
-    <div class="span2">
+		<div class="span2">
+			<%= date_field_tag :renewal_date_start, params[:renewal_date_start] %>
+      <span class="help-block">Renewal Date (Start)</span>
+		</div>
+		<div class="span2">
+			<%= date_field_tag :renewal_date_end, params[:renewal_date_end] %>
+      <span class="help-block">Renewal Date (End)</span>
+		</div>
+		<div class="span2">
       <%= link_to members_path(format: "xlsx"), :class => 'btn btn-block', :id => 'members-list-download' do %>
         Export This List
         <%= icon('download') %>

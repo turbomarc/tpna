@@ -12,18 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
 //= require underscore
+//= require bootstrap
+//= require modernizr
+//= require date-input-polyfill
 //= require_tree .
-
-$(function () {
-	$('#members').on('click', 'th a, .pagination a' , function () {
-    $.getScript(this.href);
-    return false;
-	});
-	$("#members_search input").keyup(function() {
-		$.get($("#members_search").attr("action"), $("#members_search").serialize(), null, "script");
-		return false;
-	});
-});
 
