@@ -21,7 +21,7 @@ class Member < ActiveRecord::Base
   attr_accessible :allhousenum, :amt, :citystzip, :email, :join, :last_payment, :name, :paid_thru, :phone, :updated
 
   scope :matching, lambda {|query| where('name ILIKE ? OR allhousenum ILIKE ?', "%#{query}%", "%#{query}%")}
-  scope :renewal_matching, lambda {|ren_query, ren_end_query| where('paid_thru BETWEEN ? and ?', "%#{ren_query}%", "%#{ren_end_query}%")}
+  scope :renewal_matching, lambda {|renewal_query_start, renewal_query_end| where('paid_thru BETWEEN ? and ?', "%#{renewal_query_start}%", "%#{renewal_query_end}%")}
 
   acts_as_xlsx
 

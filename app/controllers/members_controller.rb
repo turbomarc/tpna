@@ -1,9 +1,10 @@
 class MembersController < ApplicationController
-  # FIXME: Ensure user is authenticated to access anything in this controller.
+  check_authorization
 
   helper_method :sort_column, :sort_direction
 
   def index
+    authorize! :read, @user, :message => 'Not authorized to read.'
     @members = filtered_paginated_members
     respond_to do |format|
         format.html
@@ -17,11 +18,12 @@ class MembersController < ApplicationController
   end
 
   def edit
+    authorize! :read, @user, :message => 'Not authorized to view details.'
     @member = Member.find(params[:id])
   end
 
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
+    authorize! :update, @user, :message => 'Not authorized to edit.'
     @member = Member.find(params[:id])
     if @member.update_attributes(params[:member])
       redirect_to members_path, :notice => "Member updated."
@@ -31,6 +33,7 @@ class MembersController < ApplicationController
   end
 
   def import
+    authorize! :update, @user, :message => 'Not authorized to edit.'
     Member.import(params[:file])
     redirect_to root_url, notice: "Members imported."
   end
@@ -55,7 +58,7 @@ class MembersController < ApplicationController
 
   def filtered_paginated_members
     filtered_members.order(sort_column + " " + sort_direction)
-                    .paginate(:per_page => 25, :page => params[:page])
+                    .paginate(:per_page => 50, :page => params[:page])
   end
 
 end
