@@ -1,6 +1,6 @@
 Tpna::Application.routes.draw do
   
-  match '/members', to: 'members#index'
+  #match '/members', to: 'members#index'
 
   authenticated :user do
     root :to => 'home#index'

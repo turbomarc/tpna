@@ -2,10 +2,9 @@ class CreateMembers < ActiveRecord::Migration
   def change
     create_table :members do |t|
       t.string :name
-      t.string :allhousenum
-      t.date :join
-      t.date :updated
-      t.date :last_payment
+      t.string :street_address
+      t.date :member_since
+      t.date :last_payment_date
       t.integer :amt
       t.date :paid_thru
       t.string :email

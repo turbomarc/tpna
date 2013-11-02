@@ -17,6 +17,22 @@ class MembersController < ApplicationController
       end
   end
 
+  def new
+    authorize! :create, @user, :message => 'Not authorized to create.'
+    @member = Member.new
+    @member.citystzip ||= "Durham, NC  27701"
+  end
+  
+  def create
+    authorize! :create, @user, :message => 'Not authorized to create.'  
+      @member = Member.new(params[:member])
+      if @member.save
+         redirect_to members_path, :notice => "Member created."
+      else
+          render 'new'
+      end
+  end
+  
   def edit
     authorize! :read, @user, :message => 'Not authorized to view details.'
     @member = Member.find(params[:id])
@@ -28,7 +44,7 @@ class MembersController < ApplicationController
     if @member.update_attributes(params[:member])
       redirect_to members_path, :notice => "Member updated."
     else
-      redirect_to members_path, :alert => "Unable to update member."
+      render 'edit'
     end
   end
 
@@ -53,12 +69,11 @@ class MembersController < ApplicationController
   end
 
   def filtered_members
-    Member.search(params[:search]).renewal_between(params[:renewal_date_start], params[:renewal_date_end])
+    Member.search(params[:search]).renewal_between(params[:renewal_date_start], params[:renewal_date_end]).order(sort_column + " " + sort_direction)
   end
 
   def filtered_paginated_members
-    filtered_members.order(sort_column + " " + sort_direction)
-                    .paginate(:per_page => 50, :page => params[:page])
+    filtered_members.paginate(:per_page => 50, :page => params[:page])
   end
 
 end

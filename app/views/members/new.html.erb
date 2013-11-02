@@ -1,0 +1,12 @@
+<% provide(:title, "Add Member") %> 
+<h1>Add new member</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@member) do |f| %>
+  	<%= render 'shared/error_messages', object: f.object %>
+    <%= render 'fields', f: f %>
+    <%= f.submit "Create member", class: "btn btn-primary" %>
+<% end %>
+	</div>
+</div>

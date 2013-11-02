@@ -15,17 +15,16 @@ ActiveRecord::Schema.define(:version => 20130925021312) do
 
   create_table "members", :force => true do |t|
     t.string   "name"
-    t.string   "allhousenum"
-    t.date     "join"
-    t.date     "updated"
-    t.date     "last_payment"
+    t.string   "street_address"
+    t.date     "member_since"
+    t.date     "last_payment_date"
     t.integer  "amt"
     t.date     "paid_thru"
     t.string   "email"
     t.string   "phone"
     t.string   "citystzip"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "roles", :force => true do |t|
