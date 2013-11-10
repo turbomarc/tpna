@@ -1,8 +1,8 @@
 <%= f.label :name %>
 <%= f.text_field :name %>
 
-<%= f.label :allhousenum, "Street Address" %>
-<%= f.text_field :allhousenum %>
+<%= f.label :street_address, "Street Address" %>
+<%= f.text_field :street_address %>
 
 <%= f.label :email %>
 <%= f.text_field :email %>
@@ -10,14 +10,15 @@
 <%= f.label :phone %>
 <%= f.text_field :phone %>
 
-<%= f.label :join, "First Joined" %>
-<%= f.text_field :join %>
+<%= f.label :member_since %>
+<%= f.date_field :member_since %>
 
-<%= f.label :last_payment, "Last Payment" %>
-<%= f.text_field :last_payment %>
+
+<%= f.label :last_payment_date, "Last Payment" %>
+<%= f.date_field :last_payment_date %>
 
 <%= f.label :amt, "Amount" %>
 <%= f.text_field :amt %>
 
 <%= f.label :paid_thru, "Expires" %>
-<%= f.text_field :paid_thru %>
+<%= f.date_field :paid_thru %>

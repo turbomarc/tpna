@@ -2,25 +2,26 @@
 #
 # Table name: members
 #
-#  id           :integer          not null, primary key
-#  name         :string(255)
-#  allhousenum  :string(255)
-#  join         :date
-#  updated      :date
-#  last_payment :date
-#  amt          :integer
-#  paid_thru    :date
-#  email        :string(255)
-#  phone        :string(255)
-#  citystzip    :string(255)
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  street_address    :string(255)
+#  member_since      :date
+#  last_payment_date :date
+#  amt               :integer
+#  paid_thru         :date
+#  email             :string(255)
+#  phone             :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 
 class Member < ActiveRecord::Base
-  attr_accessible :allhousenum, :amt, :citystzip, :email, :join, :last_payment, :name, :paid_thru, :phone, :updated
-
-  scope :matching, lambda {|query| where('name ILIKE ? OR allhousenum ILIKE ?', "%#{query}%", "%#{query}%")}
+  attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone
+  
+  validates :name, presence: true
+  validates :street_address, presence: true, uniqueness: { case_sensitive: false }  
+    
+  scope :matching, lambda {|query| where('name ILIKE ? OR street_address ILIKE ?', "%#{query}%", "%#{query}%")}
   scope :renewal_matching, lambda {|renewal_query_start, renewal_query_end| where('paid_thru BETWEEN ? and ?', "%#{renewal_query_start}%", "%#{renewal_query_end}%")}
 
   acts_as_xlsx
