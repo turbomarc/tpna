@@ -11,16 +11,15 @@
 #  paid_thru         :date
 #  email             :string(255)
 #  phone             :string(255)
-#  citystzip         :string(255)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
 
 class Member < ActiveRecord::Base
-  attr_accessible :street_address, :amt, :citystzip, :email, :member_since, :last_payment_date, :name, :paid_thru, :phone, :updated
+  attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone
   
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :street_address, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }  
+  validates :name, presence: true
+  validates :street_address, presence: true, uniqueness: { case_sensitive: false }  
     
   scope :matching, lambda {|query| where('name ILIKE ? OR street_address ILIKE ?', "%#{query}%", "%#{query}%")}
   scope :renewal_matching, lambda {|renewal_query_start, renewal_query_end| where('paid_thru BETWEEN ? and ?', "%#{renewal_query_start}%", "%#{renewal_query_end}%")}

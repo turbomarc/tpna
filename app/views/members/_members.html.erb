@@ -17,7 +17,7 @@
       <tr>
         <td><%= member.id %></td>
         <td><%= link_to member.name, edit_member_path(member) %></td>
-        <td><%= link_to_google_maps member.street_address, member.citystzip %></td>
+        <td><%= link_to_google_maps member.street_address %></td>
         <td><%= mail_to member.email %></td>
         <td><%= member.last_payment_date %></td>
         <td><%= number_to_currency member.amt %></td>

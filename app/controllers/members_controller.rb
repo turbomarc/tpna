@@ -20,16 +20,15 @@ class MembersController < ApplicationController
   def new
     authorize! :create, @user, :message => 'Not authorized to create.'
     @member = Member.new
-    @member.citystzip ||= "Durham, NC  27701"
   end
   
   def create
     authorize! :create, @user, :message => 'Not authorized to create.'  
       @member = Member.new(params[:member])
       if @member.save
-         redirect_to members_path, :notice => "Member created."
+        redirect_to members_path, :notice => "Member created."
       else
-          render 'new'
+        render 'new'
       end
   end
   

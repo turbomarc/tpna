@@ -11,7 +11,6 @@
 #  paid_thru         :date
 #  email             :string(255)
 #  phone             :string(255)
-#  citystzip         :string(255)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
