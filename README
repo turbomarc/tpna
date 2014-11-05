@@ -14,6 +14,6 @@ Recipes:
 Preferences:
 {:git=>true, :railsapps=>"none", :dev_webserver=>"thin", :prod_webserver=>"thin", :database=>"postgresql", :templates=>"erb", :unit_test=>"rspec", :integration=>"none", :continuous_testing=>"none", :fixtures=>"none", :frontend=>"bootstrap", :bootstrap=>"sass", :email=>"gmail", :authentication=>"devise", :devise_modules=>"default", :authorization=>"cancan", :form_builder=>"none", :starter_app=>"admin_app", :quiet_assets=>true, :local_env_file=>true, :better_errors=>true, :ban_spiders=>true}
 
-________________________
+_________________________
 
 License
