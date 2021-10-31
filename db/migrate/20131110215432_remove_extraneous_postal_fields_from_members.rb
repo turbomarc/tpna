@@ -1,11 +1,11 @@
-class RemoveExtraneousPostalFieldsFromMembers < ActiveRecord::Migration
+class RemoveExtraneousPostalFieldsFromMembers < ActiveRecord::Migration[4.2]
   def up
     remove_column :members, :updated
     remove_column :members, :citystzip
     rename_column :members, :allhousenum, :street_address
     rename_column :members, :join, :member_since
     rename_column :members, :last_payment, :last_payment_date
-    
+
   end
 
   def down
