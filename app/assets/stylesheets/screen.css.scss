@@ -1,5 +1,3 @@
-@import "compass/typography";
-
 th a {
   &.current {
     padding-right: image-width("up_arrow.gif") + 2px;
@@ -17,5 +15,5 @@ th a {
 }
 
 .members-table {
-  @include leader;
+  margin-top: 1em;
 }

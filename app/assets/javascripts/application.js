@@ -14,7 +14,5 @@
 //= require jquery_ujs
 //= require underscore
 //= require bootstrap
-//= require modernizr
-//= require date-input-polyfill
 //= require_tree .
 

@@ -1,43 +1,43 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
-gem 'rails', '3.2.14'
+ruby '3.0.2'
+gem 'rails', '6.1.4'
 
+gem 'activeresource'
 gem 'acts_as_xlsx'
-gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
-gem 'cancan'
-gem 'date-input-rails', '~> 0.0.3'
+gem 'cancancan'
 gem 'devise'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rolify'
 gem 'roo'
+gem 'rubyzip', '>= 1.0.0'
+gem 'zip-zip'
 gem 'thin'
-gem 'will_paginate', '~> 3.0'
+gem 'will_paginate'
 
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'compass-rails', '~> 1.0.3'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-rails'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
 group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
-  gem 'quiet_assets'
   gem 'rails_layout'
 end
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 5.0.2'
 end
 
 group :test do
-  gem 'database_cleaner', '1.0.1'
+  gem 'database_cleaner'
   gem 'email_spec'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_girl_rails'
 end
