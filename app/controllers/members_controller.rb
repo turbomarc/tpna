@@ -21,17 +21,17 @@ class MembersController < ApplicationController
     authorize! :create, @user, :message => 'Not authorized to create.'
     @member = Member.new
   end
-  
+
   def create
-    authorize! :create, @user, :message => 'Not authorized to create.'  
-      @member = Member.new(params[:member])
+    authorize! :create, @user, :message => 'Not authorized to create.'
+      @member = Member.new(member_params)
       if @member.save
         redirect_to members_path, :notice => "Member created."
       else
         render 'new'
       end
   end
-  
+
   def edit
     authorize! :read, @user, :message => 'Not authorized to view details.'
     @member = Member.find(params[:id])
@@ -40,7 +40,7 @@ class MembersController < ApplicationController
   def update
     authorize! :update, @user, :message => 'Not authorized to edit.'
     @member = Member.find(params[:id])
-    if @member.update_attributes(params[:member])
+    if @member.update(member_params)
       redirect_to members_path, :notice => "Member updated."
     else
       render 'edit'
@@ -75,4 +75,7 @@ class MembersController < ApplicationController
     filtered_members.paginate(:per_page => 50, :page => params[:page])
   end
 
+  def member_params
+    params.require(:member).permit(:name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone)
+  end
 end

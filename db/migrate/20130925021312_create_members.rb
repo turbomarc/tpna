@@ -11,7 +11,7 @@ class CreateMembers < ActiveRecord::Migration[4.2]
       t.string :email
       t.string :phone
       t.string :citystzip
- 
+
       t.timestamps
     end
   end

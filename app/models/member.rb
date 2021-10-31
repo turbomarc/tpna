@@ -16,11 +16,11 @@
 #
 
 class Member < ActiveRecord::Base
-  attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone
-  
+  # attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone
+
   validates :name, presence: true
-  validates :street_address, presence: true, uniqueness: { case_sensitive: false }  
-    
+  validates :street_address, presence: true, uniqueness: { case_sensitive: false }
+
   scope :matching, lambda {|query| where('name ILIKE ? OR street_address ILIKE ?', "%#{query}%", "%#{query}%")}
   scope :renewal_matching, lambda {|renewal_query_start, renewal_query_end| where('paid_thru BETWEEN ? and ?', "%#{renewal_query_start}%", "%#{renewal_query_end}%")}
 
@@ -70,7 +70,7 @@ class Member < ActiveRecord::Base
     if query.present?
       matching(query)
     else
-      scoped
+      where(nil)
     end
   end
 
@@ -82,7 +82,7 @@ class Member < ActiveRecord::Base
     elsif end_date.present?
       where("paid_thru <= ?", end_date)
     else
-      scoped
+      where(nil)
     end
   end
 

@@ -14,6 +14,6 @@ class RemoveExtraneousPostalFieldsFromMembers < ActiveRecord::Migration[4.2]
     rename_column :members, :street_address, :allhousenum
     add_column :members, :citystzip, :string
     add_column :members, :updated, :date
-    
+
   end
 end
