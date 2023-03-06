@@ -12,11 +12,12 @@ gem 'devise'
 gem 'figaro'
 gem 'jquery-rails'
 gem 'pg'
+gem 'puma'
 gem 'rolify'
 gem 'roo'
 gem 'rubyzip', '>= 1.0.0'
 gem 'zip-zip'
-gem 'thin'
+#gem 'thin'
 gem 'will_paginate'
 
 group :assets do
@@ -33,7 +34,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0.2'
+  gem 'rspec-rails'
 end
 
 group :test do
