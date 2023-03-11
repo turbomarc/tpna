@@ -15,7 +15,7 @@
       <span class="help-block">Renewal Date (End)</span>
 		</div>
 		<div class="span2">
-      <%= link_to members_path(format: "xlsx"), :class => 'btn btn-block', :id => 'members-list-download' do %>
+      <%= link_to export_members_path(format: "csv"), :class => 'btn btn-block', :id => 'members-list-download' do %>
         Export This List
         <%= icon('download') %>
       <%- end %>

@@ -8,13 +8,27 @@ class MembersController < ApplicationController
     @members = filtered_paginated_members
     respond_to do |format|
         format.html
-        format.csv { send_data @members.to_csv } #{ render text: @members.to_csv }
-        format.xls# { send_data @members.to_csv(col_sep: "\t") }
-        format.xlsx {
-          send_data filtered_members.to_xlsx.to_stream.read, :filename => download_filename, :type => "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-        }
         format.js
       end
+  end
+
+  def export
+    authorize! :read, @user, :message => 'Not authorized to read.'
+    @members = filtered_members
+    respond_to do |format|
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"#{download_filename}\""
+        headers['Content-Type'] ||= 'text/csv'
+        column_names = Member.column_names
+        csv_data = CSV.generate do |csv|
+          csv <<  column_names
+          @members.each do |member|
+            csv << member.attributes.values_at(*column_names) 
+          end
+        end
+        send_data csv_data, type: 'text/csv; charset=utf-8; header=present', disposition: "attachment; filename=#{download_filename}"
+      end
+    end
   end
 
   def new
@@ -64,7 +78,7 @@ class MembersController < ApplicationController
   end
 
   def download_filename
-    ['tpna-members', params[:search], Time.current.to_s(:number)].compact.join('-') + '.xlsx'
+    ['tpna-members', params[:search], Time.current.to_s(:number)].compact.join('-') + '.csv'
   end
 
   def filtered_members
