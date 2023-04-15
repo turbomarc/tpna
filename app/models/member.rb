@@ -16,7 +16,7 @@
 #
 
 class Member < ActiveRecord::Base
-  # attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone
+  # attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone, :notes
 
   validates :name, presence: true
   validates :street_address, presence: true, uniqueness: { case_sensitive: false }

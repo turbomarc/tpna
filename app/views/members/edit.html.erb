@@ -1,6 +1,10 @@
 <% provide(:title, "Edit Member") %> 
 <h1>Update member information</h1>
 
+<div class="span2 offset3">
+  <%= button_to "Delete this Member", member_path(@member), method: :delete, data: { confirm: "Are you sure you want to delete this member?" }, class: "btn btn-danger" %>
+</div>
+
 <div class="row">
   <div class="span6 offset3">
 	<%= form_for(@member) do |f| %>

@@ -10,6 +10,7 @@
       <th><%= sortable "last_payment_date", "Last Payment" %></th>
       <th><%= sortable "amt", "Amount" %></th>
       <th><%= sortable "paid_thru", "For Renewal On" %></th>
+      <th><%= sortable "notes", "Notes" %></th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,7 @@
         <td><%= member.last_payment_date %></td>
         <td><%= number_to_currency member.amt %></td>
         <td><%= member.paid_thru %></td>
+        <td><%= member.notes %></td>
       </tr>
     <% end %>
   </tbody>

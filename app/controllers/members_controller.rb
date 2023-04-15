@@ -61,6 +61,14 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    authorize! :destroy, @user, :message => 'Not authorized to delete.'
+    @member = Member.find(params[:id])
+    @member.destroy
+
+    redirect_to members_path, :notice => "Member deleted."
+  end
+
   def import
     authorize! :update, @user, :message => 'Not authorized to edit.'
     Member.import(params[:file])
@@ -90,6 +98,6 @@ class MembersController < ApplicationController
   end
 
   def member_params
-    params.require(:member).permit(:name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone)
+    params.require(:member).permit(:name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone, :notes)
   end
 end
