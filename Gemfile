@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-ruby '3.0.2'
-gem 'rails', '6.1.4'
+ruby '3.3.6'
+gem 'rails', '7.2.2'
 
 gem 'activeresource'
 gem 'acts_as_xlsx'
