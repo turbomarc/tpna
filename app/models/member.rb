@@ -16,6 +16,7 @@
 #
 
 class Member < ActiveRecord::Base
+  paginates_per 50
   # attr_accessible :name, :street_address, :member_since, :last_payment_date, :amt, :paid_thru, :email, :phone, :notes
 
   validates :name, presence: true
@@ -23,8 +24,6 @@ class Member < ActiveRecord::Base
 
   scope :matching, lambda {|query| where('name ILIKE ? OR street_address ILIKE ?', "%#{query}%", "%#{query}%")}
   scope :renewal_matching, lambda {|renewal_query_start, renewal_query_end| where('paid_thru BETWEEN ? and ?', "%#{renewal_query_start}%", "%#{renewal_query_end}%")}
-
-  acts_as_xlsx
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

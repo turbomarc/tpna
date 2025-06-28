@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 ruby '3.3.6'
 gem 'rails', '7.2.2'
+gem "bootsnap", require: false
 
 gem 'activeresource'
-gem 'acts_as_xlsx'
 gem 'bootstrap-sass'
 gem 'bootstrap-will_paginate'
 gem 'cancancan'
@@ -18,7 +18,7 @@ gem 'roo'
 gem 'rubyzip', '>= 1.0.0'
 gem 'zip-zip'
 #gem 'thin'
-gem 'will_paginate'
+gem 'kaminari'
 
 group :assets do
   gem 'coffee-rails'

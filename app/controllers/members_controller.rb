@@ -94,7 +94,7 @@ class MembersController < ApplicationController
   end
 
   def filtered_paginated_members
-    filtered_members.paginate(:per_page => 50, :page => params[:page])
+    filtered_members.page(params[:page])
   end
 
   def member_params
