@@ -86,7 +86,7 @@ class MembersController < ApplicationController
   end
 
   def download_filename
-    ['tpna-members', params[:search], Time.current.to_s(:number)].compact.join('-') + '.csv'
+    ['tpna-members', params[:search], Time.current.to_s].compact.join('-') + '.csv'
   end
 
   def filtered_members
